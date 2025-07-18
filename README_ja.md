@@ -44,7 +44,7 @@ python main.py --data your_data.csv --weight 65 --height 1.70 --age 30 --output 
 コアとなるHP（ヒットポイント）計算は以下の数学的モデルに従う：
 
 ```math
-HP_n = min(HP_{n-1} - EE_n \cdot{EE\_increase}_n + heal_n \cdot {heal\_increase}_n, sup_{HP}_{n-1})
+HP_n = min(HP_{n-1} - EE_n \cdot{EE\_increase}_n + heal_n \cdot {heal\_increase}_n, {sup\_{HP}}_{n-1})
 ```
 
 ここで、エネルギー消費項 `EE_n × EE_increase_n` は体力減衰を、回復項 `heal_n × heal_increase_n` は体力回復を表す。

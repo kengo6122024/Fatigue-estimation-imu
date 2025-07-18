@@ -44,7 +44,7 @@ python main.py --data your_data.csv --weight 65 --height 1.70 --age 30 --output 
 The core HP (Hit Point) calculation follows this mathematical model:
 
 ```math
-HP_n = min(HP_{n-1} - EE_n \cdot{EE\_increase}_n + heal_n \cdot {heal\_increase}_n, sup_{HP}_{n-1})
+HP_n = min(HP_{n-1} - EE_n \cdot{EE\_increase}_n + heal_n \cdot {heal\_increase}_n, {sup\_{HP}}_{n-1})
 ```
 
 Where the energy expenditure term `EE_n × EE_increase_n` represents stamina depletion, and the recovery term `heal_n × heal_increase_n` represents stamina restoration.
