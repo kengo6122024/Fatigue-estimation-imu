@@ -1,5 +1,7 @@
 # A Real-Time Fatigue Estimation System Using IMU for Athlete Monitoring
 
+[日本語版 README](README_ja.md) | [English](README.md)
+
 ## Overview
 This application is designed to calculate athlete stamina and fatigue status in real-time based on IMU (Inertial Measurement Unit) sensor data. The program processes accelerometer and gyroscope sensor data to provide real-time monitoring of physical condition, stamina consumption, and fatigue levels with visualization and analysis capabilities.
 
@@ -41,15 +43,19 @@ python main.py --data your_data.csv --weight 65 --height 1.70 --age 30 --output 
 
 The core HP (Hit Point) calculation follows this mathematical model:
 
-$$\mathrm{HP}_n = \min \left(\mathrm{HP}_{n-1} - \underbrace{\mathrm{EE}_n \cdot \mathrm{EE\_increase}_n}_{\text{Stamina depletion term}} + \underbrace{\mathrm{heal}_n \cdot \mathrm{heal\_increase}_n}_{\text{Recovery term}}, \mathrm{sup\_HP}_{n-1}\right)$$
+```math
+HP_n = min(HP_{n-1} - EE_n × EE_increase_n + heal_n × heal_increase_n, sup_HP_{n-1})
+```
+
+Where the energy expenditure term `EE_n × EE_increase_n` represents stamina depletion, and the recovery term `heal_n × heal_increase_n` represents stamina restoration.
 
 Where:
-- $\mathrm{HP}_n$: Health Points at time step n
-- $\mathrm{EE}_n$: Energy Expenditure at time step n
-- $\mathrm{EE\_increase}_n$: Energy expenditure amplification factor
-- $\mathrm{heal}_n$: Base recovery rate
-- $\mathrm{heal\_increase}_n$: Recovery amplification factor
-- $\mathrm{sup\_HP}_{n-1}$: Maximum HP limit at time step n-1
+- `HP_n`: Health Points at time step n
+- `EE_n`: Energy Expenditure at time step n
+- `EE_increase_n`: Energy expenditure amplification factor
+- `heal_n`: Base recovery rate
+- `heal_increase_n`: Recovery amplification factor
+- `sup_HP_{n-1}`: Maximum HP limit at time step n-1
 
 ### Key Components:
 1. **Energy Expenditure (EE)**: `EE = std × REE × max_score`
